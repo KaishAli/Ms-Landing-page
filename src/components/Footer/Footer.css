@@ -1,0 +1,32 @@
+
+.footer .footer-link{
+    font-size: 1rem;
+    padding: 0 1.75rem;
+}
+.footer a i{
+    font-size: 2rem;
+    padding: 0 1rem;
+}
+ul li{
+    list-style: none;
+    margin-left: 1rem;
+    font-size: 1em;
+    font-weight: 600;
+    color: #C0C2C9;
+}
+.address{
+    font-size: 1.2em;
+    color: #C0C2C9;
+}
+a i {
+    font-size: 1.5rem;
+    color: aliceblue;
+}
+h1{
+    color: aliceblue;
+    font-weight: 800;
+}
+.footer-heading{
+    font-size: 3em;
+    color: #ffffff;
+}
