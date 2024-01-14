@@ -2,75 +2,6 @@ import "../Apply/Apply.css";
 function Apply() {
     return (
         <>
-            {/* <div className="hr-main container-fluid" style={{ background: "#f6f6f6" }}>
-    <div className="row">
-        <div className="col-md-4 ms-md-5 mt-4">
-            <h1 className="text-dark">
-                Learn From <br />
-                Master, Hands-On
-            </h1>
-        </div>
-        <div className="col-md-4">
-            <ul className="table-design">
-                <li className="text-black">Applide Finance</li>
-                <hr />
-                <li>User Experience Design</li>
-                <hr />
-                <li>Human Resource Management</li>
-                <hr />
-                <li>Applide Finance</li>
-                <hr />
-                <li>User Experience Design</li>
-                <hr />
-                <li>Human Resource Management</li>
-                <hr />
-            </ul>
-        </div>
-        <div className="col-md-7">
-            <div className="container-fluid py-5 bg-white rounded-3 m-4">
-                <span className="fw-bold text-dark text-capitalize fs-5">
-                    Human Resource Management
-                </span>
-                <hr />
-                <div className="row">
-                    <div className="col-md-6">
-                        <table className="table table-borderless">
-                            <tbody>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                </tr>
-                                <tr>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <ul>
-                            <li><i className="fa-solid fa-star"></i> xyzzzhjgdshg</li>
-                            <li><i className="fa-solid fa-star"></i> xyzzzhjgdshg</li>
-                            <li><i className="fa-solid fa-star"></i> xyzzzhjgdshg</li>
-                        </ul>
-                        <button className="btn btn-dark w-75">xyz</button>
-                    </div>
-                    <div className="col-md-6">
-                        <iframe
-                            className="rounded-5 border-dark main-btn"
-                            width="360"
-                            height="215"
-                            src="https://www.youtube.com/embed/IyMIGNBmRrg"
-                            title="YouTube video player"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowFullScreen
-                        ></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> */}
-
             <div className="hr-main container-fluid" style={{ background: "#f6f6f6" }}>
                 <div className="ms-md-5 mt-4">
                     <h1 className="text-dark">
@@ -121,7 +52,7 @@ function Apply() {
                                         <li><i class="fa-solid fa-star"></i> Join Internship</li>
                                         <li><i class="fa-solid fa-star"></i> Hand on on Practice</li>
                                     </ul>
-                                    <button style={{ background: "none", color: "black", width:"20rem" }} className='btn btn-light mt-3 homepageBtn'>Apply Now img</button>
+                                    <button style={{ background: "none", color: "black", width:"20rem" }} className='btn btn-light mt-3 homepageBtn'>Apply Now</button>
                                 </div>
                                 <div className="col-md-6">
                                     <iframe width="350" height="250" className="rounded-2" src="https://www.youtube.com/embed/IyMIGNBmRrg?si=_73SMSqsh1ZBXNXe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

@@ -19,8 +19,6 @@ function MeetMasters() {
                 <div className="about-section mt-0 wrapper">
                     <span className="exp-engage" style={{ color: 'white' }}> Meet Your Masters</span><br />
                     <span className="close-look" > Meet Your Masters</span><br />
-
-
                 </div>
                 <div className='me-5 p-4'>
                     <div className='arrow-direction'>

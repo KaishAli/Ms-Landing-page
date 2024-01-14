@@ -26,11 +26,8 @@
 }
 
 .hero-button {
-    /* height: 15px; */
     border-radius: 20px;
     border-color: linear-gradient(90deg, rgba(53, 44, 209, 1) 0%, rgba(93, 6, 94, 1) 24%, rgba(133, 91, 62, 1) 50%, rgba(167, 163, 35, 1) 72%, rgba(211, 255, 0, 1) 100%);
-    /* background: rgb(53, 44, 209); */
-    /* background: linear-gradient(90deg, rgba(53, 44, 209, 1) 0%, rgba(93, 6, 94, 1) 24%, rgba(133, 91, 62, 1) 50%, rgba(167, 163, 35, 1) 72%, rgba(211, 255, 0, 1) 100%); */
 }
 
 .header-button {

@@ -36,3 +36,11 @@
     background: rgb(210, 212, 213);
     border-radius: 10px;
 }
+
+
+.hoverClass:hover, .hoverClass:focus, .hoverClass:active {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: 1s;
+    cursor: pointer;
+  }

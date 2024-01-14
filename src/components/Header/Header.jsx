@@ -3,7 +3,6 @@ import logo from '../Assests/logo.png';
 function Header() {
     return (
         <>
-            {/* <header> */}
                 <nav className="navbar navbar-expand-lg navigation-wrap">
                     <div className="container mt-0">
                         <a className="navbar-brand" href="_blank"><img src={logo} alt='xyz' width="200px" /></a>
@@ -24,17 +23,16 @@ function Header() {
                                     <a className=" " aria-current="page" href="/">Masters</a>
                                 </li>
                                 <li className="">
-                                    <a className="" href="#about">Admissions</a>
+                                    <a className="" href="#">Admissions</a>
                                 </li>
                                 <li className="">
-                                    <a className="" href="#education">Student Life</a>
+                                    <a className="" href="#">Student Life</a>
                                 </li>
                             </ul>
                             <button className="header-button ms-auto mb-2 ">Strategic Marketing $AI</button>
                         </div>
                     </div>
                 </nav>
-            {/* </header> */}
         </>
     )
 }
