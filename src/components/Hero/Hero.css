@@ -74,7 +74,7 @@
 .Hero-look {
     color: white;
     font-size: 2.5rem;
-  
+
     font-weight: bold;
 }
 
@@ -82,9 +82,14 @@
     width: 31rem;
     margin-left: 4rem;
 }
+
 .homepage-sec {
     background: black;
     height: 12rem;
     width: 75%;
 
+}
+
+.homepageBtn {
+    border:2px solid rgb(232 122 241 / 84%)
 }
