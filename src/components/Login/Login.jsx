@@ -16,6 +16,7 @@ function Login({ setIsAuthenticated }) {
         } else {
             setAuthen(false);
             setIsAuthenticated(false);
+            alert("Please Enter Valid Credential");
         }
         console.log(Authen); // This will still log the previous state value
     }
