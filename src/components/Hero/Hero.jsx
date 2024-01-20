@@ -1,6 +1,7 @@
 import hero from '../Assests/hero.png';
 import '../Hero/Hero.css';
 function Hero() {
+    
     return (
         <>
             <div className='container'>
