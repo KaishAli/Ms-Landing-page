@@ -7,10 +7,26 @@ import Footer from '../src/components/Footer/Footer'
 import NewsTab from '../src/components/News Section/NewsTab'
 import Community from './components/Community/Community'
 import Apply from '../src/components/Apply/Apply'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return localStorage.getItem('isAuthenticated') === 'true';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('isAuthenticated', isAuthenticated.toString());
+  }, [isAuthenticated]);
+
+  const handleAuthChange = (authenState) => {
+    setIsAuthenticated(authenState);
+  };
+
+  const handleLogout = () => {
+    // Clear authentication information and set isAuthenticated to false
+    localStorage.removeItem('isAuthenticated');
+    setIsAuthenticated(false);
+  };
 
   return (
     <>
@@ -18,7 +34,7 @@ function App() {
         {
           isAuthenticated ? <>
             <div>
-              <Header />
+              <Header handleLogout={handleLogout} />
             </div>
             <hr style={{ color: "white" }} />
             <Hero />
@@ -29,7 +45,7 @@ function App() {
             <Community />
             <Footer />
           </>
-            : <Login setIsAuthenticated={setIsAuthenticated} />
+            : <Login setIsAuthenticated={handleAuthChange} />
         }
       </div>
 

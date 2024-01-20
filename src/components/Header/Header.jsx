@@ -1,6 +1,6 @@
 import '../Header/header.css';
 import logo from '../Assests/logo.png';
-function Header() {
+function Header({handleLogout}) {
     return (
         <>
                 <nav className="navbar navbar-expand-lg navigation-wrap">
@@ -29,7 +29,7 @@ function Header() {
                                     <a className="" href="#">Student Life</a>
                                 </li>
                             </ul>
-                            <button className="header-button ms-auto mb-2 ">Strategic Marketing $AI</button>
+                            <button onClick={handleLogout} className="header-button ms-auto mb-2 ">Log Out</button>
                         </div>
                     </div>
                 </nav>
