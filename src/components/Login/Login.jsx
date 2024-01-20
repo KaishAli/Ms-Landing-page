@@ -61,10 +61,11 @@ function Login({ setIsAuthenticated }) {
 
 
             <div className="Logcontainer">
-                <img
+                {/* <img
                     src="https://www.yourwebsite.com/path/to/your/logo.png"
                     alt="Your Logo"
-                />
+                /> */}
+                <span>😎</span>
                 <h1 className="textColor">Sign In</h1>
                 <form id="signinForm" onSubmit={handleSubmit}>
                     <label className="textColor" htmlFor="email">
