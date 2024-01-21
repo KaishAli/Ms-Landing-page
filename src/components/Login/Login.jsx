@@ -2,12 +2,24 @@ import { useEffect, useState } from 'react';
 import '../../components/Login/Login.css'
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-function Login({ setIsAuthenticated }) {
-    const [email, setEmail] = useState('');
+import Header from '../Header/Header';
+function Login({ email, setEmail, setIsAuthenticated }) {
     const [password, setPassword] = useState('')
     const [Authen, setAuthen] = useState(false);
     const [errMes, setErrMes] = useState("");
 
+
+    useEffect(() => {
+        const savedEmail = localStorage.getItem('userEmail');
+        if (savedEmail) {
+            setEmail(savedEmail);
+        }
+    }, []);
+
+    // Save email to local storage whenever it changes
+    useEffect(() => {
+        localStorage.setItem('userEmail', email);
+    }, [email]);
 
     useEffect(() => {
     }, [Authen]);
@@ -22,6 +34,13 @@ function Login({ setIsAuthenticated }) {
             closeAlert();
             isValid = false;
         }
+
+        if (password.length < 6) {
+            // newErrors.email = 'Invalid email address';
+            setErrMes('Password must be 6-digits');
+            closeAlert();
+            isValid = false;
+        }
         return isValid
     }
 
@@ -31,7 +50,7 @@ function Login({ setIsAuthenticated }) {
         }, 3000);
     }
 
-    function handleSubmit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault();
         const valid = validation()
         if (valid) {
@@ -41,12 +60,12 @@ function Login({ setIsAuthenticated }) {
             } else {
                 setAuthen(false);
                 setIsAuthenticated(false);
-                alert("Please Enter Valid Credential");
             }
         }
 
-        console.log(Authen); // This will still log the previous state value
-    }
+    };
+
+    console.log(email);
     return (
         <>
             {errMes ?
@@ -54,22 +73,13 @@ function Login({ setIsAuthenticated }) {
                     <Alert severity="error">{errMes}</Alert>
                 </Stack>
                 : ""
-                // <Stack sx={{ width: '100%' }} spacing={2}>
-                //     <Alert severity="success">Login Successfuly</Alert>
-                //  </Stack>
             }
-
-
             <div className="Logcontainer">
-                {/* <img
-                    src="https://www.yourwebsite.com/path/to/your/logo.png"
-                    alt="Your Logo"
-                /> */}
                 <span>😎</span>
                 <h1 className="textColor">Sign In</h1>
                 <form id="signinForm" onSubmit={handleSubmit}>
                     <label className="textColor" htmlFor="email">
-                        Email or phone number:
+                        Email Address
                     </label>
                     <input value={email} onChange={(e) => { setEmail(e.target.value) }} type="text" id="email" name="email" required="" />
                     <br />

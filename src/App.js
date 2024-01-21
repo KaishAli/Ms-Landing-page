@@ -7,15 +7,20 @@ import Footer from '../src/components/Footer/Footer'
 import NewsTab from '../src/components/News Section/NewsTab'
 import Community from './components/Community/Community'
 import Apply from '../src/components/Apply/Apply'
+// import Drawer from '../src/components/Drawer/Drawer'
+
 import { useEffect, useState } from 'react'
 
 function App() {
+  const [email, setEmail] = useState('');
+
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     return localStorage.getItem('isAuthenticated') === 'true';
   });
 
   useEffect(() => {
     localStorage.setItem('isAuthenticated', isAuthenticated.toString());
+
   }, [isAuthenticated]);
 
   const handleAuthChange = (authenState) => {
@@ -28,28 +33,25 @@ function App() {
     setIsAuthenticated(false);
   };
 
-
- 
-
-
   return (
     <>
       <div className='main-wp'>
         {
-          isAuthenticated ? <>
-            <div>
-              <Header handleLogout={handleLogout} />
-            </div>
-            <hr style={{ color: "white" }} />
-            <Hero />
-            <Apply />
-            <ExperienceEngage />
-            <MeetMasters />
-            <NewsTab />
-            <Community />
-            <Footer />
-          </>
-            : <Login setIsAuthenticated={handleAuthChange} />
+          isAuthenticated ?
+            <>
+              <div>
+                <Header email={email} handleLogout={handleLogout} />
+              </div>
+              <hr style={{ color: "white" }} />
+              <Hero />
+              <Apply />
+              <ExperienceEngage />
+              <MeetMasters />
+              <NewsTab />
+              <Community />
+              <Footer />
+            </>
+            : <Login email={email} setEmail={setEmail} handleAuthChange={handleAuthChange} setIsAuthenticated={handleAuthChange} />
         }
       </div>
 

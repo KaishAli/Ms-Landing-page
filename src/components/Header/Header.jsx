@@ -1,6 +1,6 @@
 import '../Header/header.css';
 import logo from '../Assests/logo.png';
-function Header({handleLogout}) {
+function Header({email,handleLogout}) {
     return (
         <>
                 <nav className="navbar navbar-expand-lg navigation-wrap">
@@ -27,6 +27,9 @@ function Header({handleLogout}) {
                                 </li>
                                 <li className="">
                                     <a className="" href="#">Student Life</a>
+                                </li>
+                                <li className="">
+                                    <a className="" href="#">{email}</a>
                                 </li>
                             </ul>
                             <button onClick={handleLogout} className="header-button ms-auto mb-2 ">Log Out</button>
