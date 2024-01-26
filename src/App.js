@@ -9,62 +9,64 @@ import NewsTab from '../src/components/News Section/NewsTab'
 import Community from './components/Community/Community'
 import Apply from '../src/components/Apply/Apply'
 import { checkEmail } from "../src/components/Login/Login";
-// import Drawer from '../src/components/Drawer/Drawer'
-
+import Drawer from '../src/components/Drawer/Drawer';
+import Snackbar from '@mui/material/Snackbar';
 import { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
-
-
+  const [open, setOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     return localStorage.getItem('isAuthenticated') === 'true';
   });
-
   useEffect(() => {
     localStorage.setItem('isAuthenticated', isAuthenticated.toString());
 
   }, [isAuthenticated]);
-
   const handleAuthChange = (authenState) => {
     setIsAuthenticated(authenState);
+    setOpen(true);
+    handleClose()
   };
-
   const handleLogout = () => {
     // Clear authentication information and set isAuthenticated to false
     localStorage.removeItem('isAuthenticated');
     setIsAuthenticated(false);
+    window.location.href ="/"
   };
 
+  function handleClose() {
+    setTimeout(() => {
+      setOpen(false);
+    }, 3000);
+  }
 
   return (
     <>
-      {
-        isAuthenticated ?
-          <div className='main-wp'>
-            <>
-              <div>
-                <Header handleLogout={handleLogout} />
-              </div>
-              <hr style={{ color: "white" }} />
-              <Hero />
-              <Apply />
-              <ExperienceEngage />
-              <MeetMasters />
-              <NewsTab />
-              <Community />
-              <Footer />
-            </>
-          </div>
-
-          :
+      {isAuthenticated ? (
+        <div className='main-wp'>
           <>
-            <div className='containerLogin'>
-              <Login handleAuthChange={handleAuthChange} setIsAuthenticated={handleAuthChange} />
+            <Snackbar
+              open={open}
+              autoHideDuration={6000}
+              onClose={handleClose}
+              message="Login Successfully"
+            />
+            <div>
+              <Header handleLogout={handleLogout} />
             </div>
+            <hr style={{ color: "white" }} />
+            <Drawer />
+            <Footer/>
           </>
-      }
-
-
+        </div>
+      ) : (
+        <>
+          <div className='containerLogin'>
+            <Login handleAuthChange={handleAuthChange} setIsAuthenticated={handleAuthChange} />
+          </div>
+        </>
+      )}
     </>
   );
 

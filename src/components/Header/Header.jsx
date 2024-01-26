@@ -20,16 +20,19 @@ function Header({email,handleLogout}) {
                         <div className="collapse navbar-collapse" id="navbarText">
                             <ul className="navbar-nav ms-auto mb-2">
                                 <li className="">
-                                    <a className=" " aria-current="page" href="/">Masters</a>
+                                    <a className=" " aria-current="page" href="/Apply">Masters</a>
                                 </li>
                                 <li className="">
-                                    <a className="" href="#">Admissions</a>
+                                    <a className="" href="/ExperienceEngage">Admissions</a>
                                 </li>
                                 <li className="">
-                                    <a className="" href="#">Student Life</a>
+                                    <a className="" href="/MeetMasters">Student Life</a>
                                 </li>
                                 <li className="">
-                                    <a className="" href="#">{email}</a>
+                                    <a className="" href="/Community">Community</a>
+                                </li>
+                                <li className="">
+                                    <a className="" href="/NewsTab">News Articale</a>
                                 </li>
                             </ul>
                             <button onClick={handleLogout} className="header-button ms-auto mb-2 ">Log Out</button>
