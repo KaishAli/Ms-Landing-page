@@ -32,7 +32,7 @@ function App() {
     // Clear authentication information and set isAuthenticated to false
     localStorage.removeItem('isAuthenticated');
     setIsAuthenticated(false);
-    window.location.href ="/"
+    window.location.href = "/"
   };
 
   function handleClose() {
@@ -56,8 +56,15 @@ function App() {
               <Header handleLogout={handleLogout} />
             </div>
             <hr style={{ color: "white" }} />
-            <Drawer />
-            <Footer/>
+            {/* <Drawer /> */}
+            <Hero />
+            <Apply />
+            <ExperienceEngage />
+            <MeetMasters />
+            <NewsTab />
+            <Community />
+            <Footer />
+            <Footer />
           </>
         </div>
       ) : (
