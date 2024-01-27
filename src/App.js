@@ -64,7 +64,6 @@ function App() {
             <NewsTab />
             <Community />
             <Footer />
-            <Footer />
           </>
         </div>
       ) : (
