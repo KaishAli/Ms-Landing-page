@@ -32,7 +32,7 @@ function App() {
     // Clear authentication information and set isAuthenticated to false
     localStorage.removeItem('isAuthenticated');
     setIsAuthenticated(false);
-    window.location.href = "/"
+    // window.location.href = "/"
   };
 
   function handleClose() {
