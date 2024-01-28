@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import '../../components/Login/Login.css'
-import Snackbar from '@mui/material/Snackbar';
 import Header from '../Header/Header';
+import Snackbar from '@mui/material/Snackbar';
 function Login({ setIsAuthenticated }) {
     const [password, setPassword] = useState('')
     const [Authen, setAuthen] = useState(false);
@@ -31,7 +31,7 @@ function Login({ setIsAuthenticated }) {
             setErrMes('Invalid email address and Password must be 6-digits');
             setOpen(true)
             handleClose()
-            isValid = false;  
+            isValid = false;
         }
         return isValid
     }

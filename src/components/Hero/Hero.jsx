@@ -1,7 +1,7 @@
 import hero from '../Assests/hero.png';
 import '../Hero/Hero.css';
 import Header from '../Header/Header';
-function Hero({handleLogout}) {
+function Hero() {
 
     return (
         <>

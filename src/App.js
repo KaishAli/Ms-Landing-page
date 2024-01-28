@@ -13,7 +13,7 @@ import Drawer from '../src/components/Drawer/Drawer';
 import Snackbar from '@mui/material/Snackbar';
 import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
+import FormSubData from './components/Admin/FormSubData'
 function App() {
   const [open, setOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
@@ -57,11 +57,13 @@ function App() {
             </div>
             <hr style={{ color: "white" }} />
             {/* <Drawer /> */}
+
             <Hero />
+            <FormSubData/>
+            <NewsTab />
             <Apply />
             <ExperienceEngage />
             <MeetMasters />
-            <NewsTab />
             <Community />
             <Footer />
           </>

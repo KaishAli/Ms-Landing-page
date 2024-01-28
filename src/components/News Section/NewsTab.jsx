@@ -5,45 +5,77 @@ import new3 from '../../components/Assests/NewsImg/new3.jpg';
 import { useEffect, useState } from "react";
 import '../../components/News Section/NewsTab.css'
 import arrowUp from '../../components/Assests/NewsImg/arrowUp.svg';
-
+import RegistrationForm from '../../components/RegistrationForm/RegistrationForm'
 function NewsTab() {
     const [currentImageIndices, setCurrentImageIndices] = useState([0, 1]);
     const [isLoading, setIsLoading] = useState(true);
+    const [open, setOpen] = useState(false);
+
     const mastersData = [
         { image: new2 },
         { image: new4 },
         { image: new3 },
         { image: new1 },
     ];
-    useEffect(() => {
-        const interval = setInterval(() => {
-            // Generate two random indices different from the current ones
-            let randomIndices;
-            do {
-                randomIndices = [
-                    Math.floor(Math.random() * mastersData.length),
-                    Math.floor(Math.random() * mastersData.length),
-                ];
-            } while (
-                randomIndices[0] === currentImageIndices[0] ||
-                randomIndices[1] === currentImageIndices[1]
-            );
 
-            setCurrentImageIndices(randomIndices);
-            setIsLoading(false);
-        }, 500); // Update every 500 milliseconds
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         // Generate two random indices different from the current ones
+    //         let randomIndices;
+    //         do {
+    //             randomIndices = [
+    //                 Math.floor(Math.random() * mastersData.length),
+    //                 Math.floor(Math.random() * mastersData.length),
+    //             ];
+    //         } while (
+    //             randomIndices[0] === currentImageIndices[0] ||
+    //             randomIndices[1] === currentImageIndices[1]
+    //         );
 
-        // Clean up the interval on component unmount
-        return () => clearInterval(interval);
-    }, [currentImageIndices, mastersData.length]);
+    //         setCurrentImageIndices(randomIndices);
+    //         setIsLoading(false);
+    //     }, 500); // Update every 500 milliseconds
+
+    //     // Clean up the interval on component unmount
+    //     return () => clearInterval(interval);
+    // }, [currentImageIndices, mastersData.length]);
     const applyData = [
         { image: new2 },
         { image: new4 },
         { image: new3 },
         { image: new1 },
     ];
+
+
+    console.log(open, 'jkdfh');
+
     return <>
+        <RegistrationForm open={open} setOpen={setOpen} />
         <div className='main-box'>
+            <div className='container mt-5 '>
+                <div className='row justify-content-center'>
+                    {
+                        applyData.map((item, index) => (
+                            <div key={index} className="col-md-2 mb-4 col-lg-3 col-sm-6'" style={{ maxWidth: "500px" }}>
+                                <div className="card hoverClass">
+                                    <img src={item.image} alt="" style={{ height: "9rem" }} className="img-thumbnail img-res zoom-effect" width="150" />
+                                    <div className="col-md-8">
+                                        <div className="card-body" style={{ background: "white" }}>
+                                            <span className="education-title" style={{ background: "black", color: "white", borderRadius: "0.5rem" }}>Apply By:Jan 16,2024</span><br />
+                                            <span style={{ fontSize: "1.5rem" }}>Master's Union CEO Challenge</span><br />
+                                            <span style={{ color: "#8e8e8e" }} >Registration Open ,No Eligibility Criteria</span>
+                                            <button onClick={handleClickOpen} className='register-btn'>Register Now {">"}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div >
             <section id="master" className='mt-5 d-flex justify-content-between'>
                 <div className="about-section mt-0 wrapper">
                     <span className="exp-engage" style={{ color: 'white' }}>In the News</span><br />
@@ -95,29 +127,7 @@ function NewsTab() {
                 <span className="exp-engage" style={{ color: 'white' }}>Experience MasterCamps</span>
             </div>
         </section>
-        <div className='container mt-5 '>
-            <div className='row justify-content-center'>
-                {
 
-                    applyData.map((item, index) => (
-                        <div key={index} className="col-md-2 mb-4 col-lg-3 col-sm-6'" style={{ maxWidth: "500px" }}>
-                            <div className="card hoverClass">
-                                <img src={item.image} alt="" style={{ height: "9rem" }} className="img-thumbnail img-res zoom-effect" width="150" />
-                                <div className="col-md-8">
-                                    <div className="card-body" style={{ background: "white" }}>
-                                        <span className="education-title" style={{ background: "black", color: "white", borderRadius: "0.5rem" }}>Apply By:Jan 16,2024</span><br />
-                                        <span style={{ fontSize: "1.5rem" }}>Master's Union CEO Challenge</span><br />
-                                        <span style={{ color: "#8e8e8e" }} >Registration Open ,No Eligibility Criteria</span>
-                                        <button className='register-btn'>Register Now {">"}</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ))
-                }
-            </div>
-
-        </div >
     </>
 }
 export default NewsTab;
