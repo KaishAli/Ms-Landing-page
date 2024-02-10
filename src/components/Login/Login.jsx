@@ -87,12 +87,12 @@ function Login({ setIsAuthenticated }) {
                     <label className="textColor" htmlFor="email">
                         Email Address
                     </label>
-                    <input value={email} onChange={(e) => { setEmail(e.target.value) }} type="text" id="email" name="email" required="" />
+                    <input className='signUpPage' value={email} onChange={(e) => { setEmail(e.target.value) }} type="text" id="email" name="email" required="" />
                     <br />
                     <label className="textColor" htmlFor="password">
                         Password:
                     </label>
-                    <input value={password} onChange={(e) => { setPassword(e.target.value) }} type="password" id="password" name="password" required="" />
+                    <input className='signUpPage' value={password} onChange={(e) => { setPassword(e.target.value) }} type="password" id="password" name="password" required="" />
                     <br />
                     <br />
                     <button className='sbm' type="submit">Sign In</button>

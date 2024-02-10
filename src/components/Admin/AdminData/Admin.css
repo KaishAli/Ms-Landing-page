@@ -1,0 +1,12 @@
+.dx-widget.dx-visibility-change-handler {
+    width: 100% !important;
+}
+
+.dx-datagrid.dx-gridbase-container.dx-datagrid-borders {
+    height: 80vh;
+}
+
+.dx-datagrid-headers.dx-datagrid-nowrap.dx-bordered-top-view {
+    color: #000000;
+    background: #7ac1ff;
+}

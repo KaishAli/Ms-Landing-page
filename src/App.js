@@ -11,9 +11,12 @@ import Apply from '../src/components/Apply/Apply'
 import { checkEmail } from "../src/components/Login/Login";
 import Drawer from '../src/components/Drawer/Drawer';
 import Snackbar from '@mui/material/Snackbar';
+import Admin from './components/Admin/AdminData/Admin'
 import { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
 import FormSubData from './components/Admin/FormSubData'
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
   const [open, setOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
@@ -56,15 +59,15 @@ function App() {
               <Header handleLogout={handleLogout} />
             </div>
             <hr style={{ color: "white" }} />
-            {/* <Drawer /> */}
-
-            <Hero />
-            <FormSubData/>
+            <Drawer />
+            {/* <Hero /> */}
+            {/* <Admin />
+            <FormSubData />
             <NewsTab />
             <Apply />
             <ExperienceEngage />
             <MeetMasters />
-            <Community />
+            <Community /> */}
             <Footer />
           </>
         </div>
@@ -72,6 +75,7 @@ function App() {
         <>
           <div className='containerLogin'>
             <Login handleAuthChange={handleAuthChange} setIsAuthenticated={handleAuthChange} />
+
           </div>
         </>
       )}

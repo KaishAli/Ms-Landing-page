@@ -8,7 +8,13 @@ import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import Input from '@mui/material/Input';
+import Snackbar from '@mui/material/Snackbar';
 import FormSubData from '../../components/Admin/FormSubData'
+import Drawer from '@mui/material/Drawer';
+
 const courses = ["Java", "C", "Python", "C++", 'HTML,CSS, JAVSCRIPT', 'REACT JS'];
 
 const educations = [
@@ -25,6 +31,7 @@ const colleges = [
 
 const RegistrationForm = ({ open, setOpen }) => {
     const [formData, setFormData] = useState({
+        id: "",
         name: '',
         email: '',
         address: '',
@@ -32,6 +39,7 @@ const RegistrationForm = ({ open, setOpen }) => {
         education: "",
         college: "",
     });
+    const [snackBar, setsnackBar] = useState(false)
 
 
 
@@ -66,16 +74,18 @@ const RegistrationForm = ({ open, setOpen }) => {
             formDataObjectConverted[key] = value;
         });
 
-        // Store the converted object in local storage
         localStorage.setItem('formData', JSON.stringify(formDataObjectConverted));
         setFormData({
-            name: '',
-            email: '',
-            address: '',
-            selectedCourse: "",
-            education: "",
-            college: "",
+            id: formData.id,
+            name: formData.name,
+            email: formData.email,
+            address: formData.address,
+            selectedCourse: formData.selectedCourse,
+            education: formData.education,
+            college: formData.college,
         })
+        setOpen(false);
+        setsnackBar(true);
     }
 
     const handleInputChange = (field) => (event) => {
@@ -85,18 +95,26 @@ const RegistrationForm = ({ open, setOpen }) => {
         });
     };
 
-    // console.log(formData,'hdsfh');
-
-
+    function handleCloseSanck() {
+        setTimeout(() => {
+            setsnackBar(false);
+        }, 3000);
+    }
     return (
         <>
+            <Snackbar
+                open={snackBar}
+                autoHideDuration={6000}
+                onClose={handleCloseSanck}
+                message="Data Added Succesfuly !"
+            />
             <FormSubData formData={formData} />
-            <Dialog
-                sx={{ height: "100%" }}
+            <Drawer
+                className='form-Drawer'
                 open={open}
                 onClose={handleClose}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
+                anchor='right'
+            // style={{}}
             >
                 <DialogTitle style={{ color: "white", background: "#007fff" }} id="alert-dialog-title">
                     Registration Form
@@ -113,96 +131,86 @@ const RegistrationForm = ({ open, setOpen }) => {
                 >
                     <CloseIcon />
                 </IconButton>
-                <div className='rg-form'>
-                    <form onSubmit={handleFormSubmit} style={{ paddingBottom: "20%", paddingTop: "10%", display: "inline" }}>
+                <div className='rg-form' style={{ padding: '20px', width: "30rem" }}>
+                    <form onSubmit={handleFormSubmit} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
 
-                        <Box sx={{ flexDirection: "column", width: "100%" }}>
-                            Your Name
-                            <span className="fieldName">
-                                <span className="asterisk">*</span>
-                            </span>
-                            <TextField
-                                sx={{ width: 500, marginBottom: 5, marginLeft: "10px" }}
+                        <FormControl sx={{ width: '100%', marginBottom: '20px' }}>
+                            <InputLabel htmlFor="name">Your Name</InputLabel>
+                            <Input
+                                id="name"
                                 type="text"
-                                // label="Name"
                                 value={formData.name}
                                 onChange={handleInputChange('name')}
-
                             />
-                        </Box>
-                        <Box sx={{ flexDirection: "column", width: "100%" }}>
-                            Your Email Id
-                            <span className="fieldName">
-                                <span className="asterisk">*</span>
-                            </span>
-                            <TextField
-                                sx={{ width: 500, marginBottom: 5, marginLeft: "10px" }}
+                        </FormControl>
+
+                        <FormControl sx={{ width: '100%', marginBottom: '20px' }}>
+                            <InputLabel htmlFor="education">Your Education</InputLabel>
+                            <Input
+                                id="education"
                                 type="text"
-                                // label="Name"
+                                value={formData.education}
+                                onChange={handleInputChange('education')}
+                            />
+                        </FormControl>
+
+                        <FormControl sx={{ width: '100%', marginBottom: '20px' }}>
+                            <InputLabel htmlFor="email">Your Email Id</InputLabel>
+                            <Input
+                                id="email"
+                                type="email"
                                 value={formData.email}
                                 onChange={handleInputChange('email')}
-
                             />
-                        </Box>
+                        </FormControl>
 
-                        <Box sx={{ flexDirection: "column", width: "100%" }}>
-                            Your Address
-                            <span className="fieldName">
-                                <span className="asterisk">*</span>
-                            </span>
-                            <TextField
-                                sx={{ width: 500, marginBottom: 5, marginLeft: "10px" }}
+                        <FormControl sx={{ width: '100%', marginBottom: '20px' }}>
+                            <InputLabel htmlFor="address">Your Address</InputLabel>
+                            <Input
+                                id="address"
                                 type="text"
-                                // label="Name"
                                 value={formData.address}
                                 onChange={handleInputChange('address')}
-
                             />
-                        </Box>
-                        <Box sx={{ flexDirection: "column", width: "100%" }}>
-                            Course Name
-                            <span className="fieldName">
-                                <span className="asterisk">*</span>
-                            </span>
+                        </FormControl>
+
+                        <FormControl sx={{ width: '100%', marginBottom: '20px' }}>
+                            <InputLabel htmlFor="course">Course Name</InputLabel>
                             <Autocomplete
-                                id="combo-box-demo"
+                                id="course"
                                 options={courses}
                                 value={formData.selectedCourse}
-                                sx={{ width: 500 }}
-                                renderInput={(params) => <TextField {...params} label="courses" />}
+                                sx={{ width: '100%' }}
+                                renderInput={(params) => <TextField {...params} />}
                                 onChange={(event, newValue) => {
-                                    console.log(newValue);
+                                    console.log(event, 'dhdfg');
                                     setFormData({
                                         ...formData,
-                                        selectedCourse: newValue
+                                        selectedCourse: newValue,
                                     });
                                 }}
                             />
-                        </Box>
-                        <Box sx={{ flexDirection: "column", width: "100%" }}>
-                            Your College name
-                            <span className="fieldName">
-                                <span className="asterisk">*</span>
-                            </span>
-                            <TextField
-                                sx={{ width: 500, marginBottom: 5, marginLeft: "10px" }}
+                        </FormControl>
+
+                        <FormControl sx={{ width: '100%', marginBottom: '20px' }}>
+                            <InputLabel htmlFor="college">Your College name</InputLabel>
+                            <Input
+                                id="college"
                                 type="text"
-                                // label="Name"
                                 value={formData.college}
                                 onChange={handleInputChange('college')}
-
                             />
-                        </Box>
+                        </FormControl>
 
-                        <Button type='submit' autoFocus>
+                        <Button variant="contained" color="primary" type='submit'>
                             Submit
                         </Button>
                     </form>
                 </div>
+            </Drawer>
 
 
 
-            </Dialog>
         </>
 
     );

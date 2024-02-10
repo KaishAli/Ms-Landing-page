@@ -6,19 +6,23 @@ import Apply from '../../components/Apply/Apply';
 import ExperienceEngage from '../../components/Experience Engage/ExperienceEngage';
 import MeetMasters from '../../components/Masters/MeetMasters';
 import Hero from '../../components/Hero/Hero';
-
+import Admin from '../Admin/AdminData/Admin';
 function Drawer({ handleLogout }) {
     return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<Hero handleLogout={handleLogout} />} />
-                <Route path="/Apply" element={<Apply />} />
-                <Route path="/ExperienceEngage" element={<ExperienceEngage />} />
-                <Route path="/MeetMasters" element={<MeetMasters />} />
-                <Route path="/NewsTab" element={<NewsTab />} />
-                <Route path="/Community" element={<Community />} />
-            </Routes>
-        </Router>
+        <>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<Hero handleLogout={handleLogout} />} />
+                    <Route path="/Apply" element={<Apply />} />
+                    <Route path="/ExperienceEngage" element={<ExperienceEngage />} />
+                    <Route path="/MeetMasters" element={<MeetMasters />} />
+                    <Route path="/NewsTab" element={<NewsTab />} />
+                    <Route path="/Community" element={<Community />} />
+                    <Route path="/Admin" element={<Admin />} />
+
+                </Routes>
+            </Router>
+        </>
     );
 }
 
