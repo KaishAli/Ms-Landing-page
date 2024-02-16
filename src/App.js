@@ -62,7 +62,7 @@ function App() {
               <hr style={{ color: "white" }} />
               <Drawer />
 
-              {/* <Footer /> */}
+              <Footer />
             </BrowserRouter>
           </>
         </div>
