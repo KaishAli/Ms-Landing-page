@@ -16,7 +16,7 @@ import { useEffect, useState } from 'react'
 
 import FormSubData from './components/Admin/FormSubData'
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 function App() {
   const [open, setOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
@@ -55,20 +55,15 @@ function App() {
               onClose={handleClose}
               message="Login Successfully"
             />
-            <div>
-              <Header handleLogout={handleLogout} />
-            </div>
-            <hr style={{ color: "white" }} />
-            <Drawer />
-            {/* <Hero /> */}
-            {/* <Admin />
-            <FormSubData />
-            <NewsTab />
-            <Apply />
-            <ExperienceEngage />
-            <MeetMasters />
-            <Community /> */}
-            <Footer />
+            <BrowserRouter>
+              <div>
+                <Header handleLogout={handleLogout} />
+              </div>
+              <hr style={{ color: "white" }} />
+              <Drawer />
+
+              {/* <Footer /> */}
+            </BrowserRouter>
           </>
         </div>
       ) : (

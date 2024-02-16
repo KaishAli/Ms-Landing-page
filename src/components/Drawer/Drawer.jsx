@@ -10,7 +10,7 @@ import Admin from '../Admin/AdminData/Admin';
 function Drawer({ handleLogout }) {
     return (
         <>
-            <Router>
+            {/* <Router> */}
                 <Routes>
                     <Route path="/" element={<Hero handleLogout={handleLogout} />} />
                     <Route path="/Apply" element={<Apply />} />
@@ -21,7 +21,7 @@ function Drawer({ handleLogout }) {
                     <Route path="/Admin" element={<Admin />} />
 
                 </Routes>
-            </Router>
+            {/* </Router> */}
         </>
     );
 }

@@ -1,20 +1,33 @@
 import 'devextreme/dist/css/dx.light.css';
-import DataGrid, { Column, ColumnChooser, ColumnFixing } from 'devextreme-react/data-grid';
+import DataGrid, { Column, ColumnChooser, ColumnFixing, Toolbar, Item } from 'devextreme-react/data-grid';
 import '../../Admin/AdminData/Admin.css'
-import { useEffect, useState } from 'react';
+import Button from 'devextreme-react/button';
+
+import { useEffect, useRef, useState } from 'react';
 function Admin() {
     const [localRegisterData, setLocalRegisterData] = useState([])
-    const storedData = localStorage.getItem('formData');
-    const myDataObject = storedData ? JSON.parse(storedData) : null;
+    const storedData = localStorage.getItem('formDataArray');
+    const gridRef = useRef()
 
     useEffect(() => {
-        if (myDataObject) {
-            console.log(myDataObject, myDataObject.name, 'myDataObject');
-            setLocalRegisterData([myDataObject])
+        if (localRegisterData) {
+            getFormData(storedData)
         }
     }, [])
-    console.log(localRegisterData, 'localRegisterData');
 
+    async function getFormData(storedData) {
+        let formDataArrayObj = [];
+        if (storedData) {
+            formDataArrayObj = JSON.parse(storedData);
+            setLocalRegisterData(formDataArrayObj);
+        }
+    }
+
+
+    function refreshDataGrid() {
+        window.location.reload()
+        console.log("call");
+    }
     return (
         <>
             <div className='datagrid-div'>
@@ -22,7 +35,17 @@ function Admin() {
                     dataSource={localRegisterData}
                     keyExpr="email"
                     showBorders={true}
+                    ref={gridRef}
                 >
+                    <Toolbar>
+                        <Item location="after">
+                            <Button
+                                icon='refresh'
+                                onClick={refreshDataGrid}
+                            />
+                        </Item>
+                        <Item name="columnChooserButton" />
+                    </Toolbar>
                     <ColumnChooser enabled={true} />
                     <ColumnFixing enabled={true} />
                     {/* <Column
@@ -65,7 +88,7 @@ function Admin() {
 
 
                 </DataGrid>
-            </div>
+            </div >
 
         </>
     )

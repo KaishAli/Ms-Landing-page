@@ -40,53 +40,46 @@ const RegistrationForm = ({ open, setOpen }) => {
         college: "",
     });
     const [snackBar, setsnackBar] = useState(false)
+    const [formDataArray, setFormDataArray] = useState([]);
 
-
-
-    // console.log(open);
-
-    // useEffect(() => {
-    //     setFormData({
-    //         name: '',
-    //         email: '',
-    //         address: '',
-    //         selectedCourse: "",
-    //         education: "",
-    //         college: "",
-    //     })
-    // }, [formData])
     const handleClose = () => {
         setOpen(false);
     };
 
+    // function handleFormSubmit(e) {
+    //     e.preventDefault();
+
+    //     // Push the formData object into the formDataArray
+    //     const updatedFormDataArray = [...formDataArray, formData];
+    //     setFormDataArray(updatedFormDataArray);
+
+    //     // Store the updated array back into localStorage
+    //     localStorage.setItem('formDataArray', JSON.stringify(updatedFormDataArray));
+
+    //     setOpen(false);
+    //     setsnackBar(true);
+    // }
+
+
+
     function handleFormSubmit(e) {
-        e.preventDefault()
-        const formDataObject = new FormData();
+        e.preventDefault();
 
-        // Append form data to the FormData object
-        for (const key in formData) {
-            formDataObject.append(key, formData[key]);
-        }
+        // Create a new object with the current formData and a unique ID
+        const newFormData = { ...formData, id: Date.now() };
 
-        // Convert FormData to an object
-        const formDataObjectConverted = {};
-        formDataObject.forEach((value, key) => {
-            formDataObjectConverted[key] = value;
-        });
+        // Push the newFormData object into the formDataArray
+        const updatedFormDataArray = [...formDataArray, newFormData];
+        setFormDataArray(updatedFormDataArray);
+        console.log(formDataArray,'formDataArray');
+        // Store the updated array back into localStorage
+        localStorage.setItem('formDataArray', JSON.stringify(updatedFormDataArray));
 
-        localStorage.setItem('formData', JSON.stringify(formDataObjectConverted));
-        setFormData({
-            id: formData.id,
-            name: formData.name,
-            email: formData.email,
-            address: formData.address,
-            selectedCourse: formData.selectedCourse,
-            education: formData.education,
-            college: formData.college,
-        })
         setOpen(false);
         setsnackBar(true);
     }
+
+
 
     const handleInputChange = (field) => (event) => {
         setFormData({
@@ -108,7 +101,7 @@ const RegistrationForm = ({ open, setOpen }) => {
                 onClose={handleCloseSanck}
                 message="Data Added Succesfuly !"
             />
-            <FormSubData formData={formData} />
+            {/* <FormSubData formData={formData} /> */}
             <Drawer
                 className='form-Drawer'
                 open={open}
